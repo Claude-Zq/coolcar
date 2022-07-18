@@ -1,0 +1,14 @@
+<!--pages/learncss/learncss.wxml-->
+<text wx:if= "{{show}}"> learncss界面</text>
+<block wx:else>
+    <text> learn css</text>
+</block>
+
+
+<view wx:for = "{{hobbies}}" wx:for-item = "val" >
+    热爱{{val}}
+</view>
+ 
+<view wx:for = "{{emps}}" wx:for-item = "val" wx:key="id">
+    员工是{{val.name}}
+</view>
