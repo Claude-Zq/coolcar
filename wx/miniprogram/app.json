@@ -1,12 +1,18 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/learncss/learncss",
+    "pages/register/register"
   ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于驾驶位置展示"
+    }
+  },
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Weixin",
+    "navigationBarTitleText": "coolcar",
     "navigationBarTextStyle": "black"
   },
   "style": "v2",
