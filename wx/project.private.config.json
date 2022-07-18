@@ -21,6 +21,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "lock",
+          "pathName": "pages/lock/lock",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }
