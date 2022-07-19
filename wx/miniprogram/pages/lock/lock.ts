@@ -47,6 +47,19 @@ Page({
   },
 
   onUnlockTap() {
+    wx.showLoading({
+      title:'开锁中',
+      mask:true, //透明蒙层
+    })
+
+    setTimeout(()=>{
+      wx.redirectTo({
+        url: '/pages/driving/driving',
+        complete:()=>{
+          wx.hideLoading()
+        }
+      })
+    },2000)
       
   },
 
