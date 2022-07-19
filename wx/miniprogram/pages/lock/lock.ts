@@ -47,20 +47,38 @@ Page({
   },
 
   onUnlockTap() {
-    wx.showLoading({
-      title:'开锁中',
-      mask:true, //透明蒙层
-    })
-
-    setTimeout(()=>{
-      wx.redirectTo({
-        url: '/pages/driving/driving',
-        complete:()=>{
-          wx.hideLoading()
+    wx.getLocation({
+      type:'gcj02',
+      success:loc=>{
+        console.log('starting a trip',{
+          location:{
+              latitude:loc.latitude,
+              longitude:loc.longitude,
+          },
+          avatarURL:this.data.shareLocation ? this.data.avatarURL : '',
         }
-      })
-    },2000)
-      
+        )
+        wx.showLoading({
+          title:'开锁中',
+          mask:true, //透明蒙层
+        })
+        setTimeout(()=>{
+          wx.redirectTo({
+            url: '/pages/driving/driving',
+            complete:()=>{
+              wx.hideLoading()
+            }
+          })
+        },2000)
+      },
+      fail:() => {
+        wx.showToast({
+            icon: 'none',
+            title: '请前往设置页授权位置信息',
+        })
+      }
+    })
+   
   },
 
   onUnload() {
