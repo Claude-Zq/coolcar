@@ -11,9 +11,7 @@ App<IAppOption>({
     })
   },
   async onLaunch() {
-    // 登录
-    wx.login()
-    
+
     // 获取用户信息
     try {
       const setting = await getSetting()
