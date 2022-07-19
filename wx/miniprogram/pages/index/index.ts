@@ -3,6 +3,15 @@
 const initialLat = 29.761267625855936
 const initialLng = 121.87264654736123
 
+interface Marker {
+  iconPath: string
+  id: number
+  latitude: number
+  longitude: number
+  width: number
+  height: number
+}
+
 Page({
 
   data: {
@@ -29,24 +38,7 @@ Page({
       },
     },
     scale:10,
-    markers: [
-      {
-        iconPath: "/resources/man.jpg",
-        id:0,
-        latitude: 23.099994,
-        longitude:113.324520,
-        width:50,
-        height:50 
-      },
-      {
-        iconPath:"/resources/car.jpeg",
-        id:1,
-        latitude:23.099994,
-        longitude:114.324520,
-        width:50,
-        height:50
-      },
-    ]
+    markers: [] as Marker[],
     },
 
     onScanClicked(){
