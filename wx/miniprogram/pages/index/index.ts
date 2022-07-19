@@ -1,7 +1,7 @@
 
 
-const initialLat = 29.761267625855936
-const initialLng = 121.87264654736123
+const initiLat = 29.761267625855936
+const initiLng = 121.87264654736123
 
 interface Marker {
   iconPath: string
@@ -33,8 +33,8 @@ Page({
       enableTraffic: false,
 
       location:{
-        latitude: initialLat,
-        longitude: initialLng,
+        latitude: initiLat,
+        longitude: initiLng,
       },
     },
     scale:10,
