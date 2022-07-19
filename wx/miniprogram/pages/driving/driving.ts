@@ -44,7 +44,8 @@ Page({
       ],
   },
 
-  onLoad(){
+  onLoad(opt:Record<'trip_id',string>){
+    console.log('current trip:',opt.trip_id)
     this.setupLocationUpdator()
     this.setupTimer()
   },
