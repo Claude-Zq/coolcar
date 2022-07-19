@@ -35,6 +35,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "mytrips",
+          "pathName": "pages/mytrips/mytrips",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }
