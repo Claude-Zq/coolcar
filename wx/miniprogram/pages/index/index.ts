@@ -1,7 +1,12 @@
 
+
+const initialLat = 29.761267625855936
+const initialLng = 121.87264654736123
+
 Page({
 
   data: {
+    avatarURL: '',
     setting:{
       skew: 0,
       rotate: 0,
@@ -19,8 +24,8 @@ Page({
       enableTraffic: false,
 
       location:{
-        latitude:29.531873,
-        longitude:106.607808,
+        latitude: initialLat,
+        longitude: initialLng,
       },
     },
     scale:10,
