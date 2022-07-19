@@ -1,5 +1,3 @@
-import { getSetting, getUserProfile } from "../../utils/util"
-
 
 Page({
 
@@ -67,16 +65,6 @@ Page({
    
     async getInfo(){
       //获取用户信息
-      try{
-        const setting = await getSetting()
-        if (setting.authSetting['scope.userInfo']){
-          const userInfoRes = await getUserProfile()
-          //首页通知我获得了用户信息
-          resolveUserInfo(userInfoRes.userInfo)
-        }
-      }catch(err){
-        rejectUserInfo(err)
-      }
     },
     
     onMyLocationTap() {
