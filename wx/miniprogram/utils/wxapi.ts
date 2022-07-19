@@ -20,7 +20,7 @@ export function getUserInfo(): Promise<WechatMiniprogram.GetUserInfoSuccessCallb
           nickName: '测试号',
           province: '重庆',
         }
-        return resolve
+        resolve(res)
       },
       fail: reject,
     })
