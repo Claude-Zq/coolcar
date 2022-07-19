@@ -1,4 +1,5 @@
 Page({
+  redirectURL: '',
 
   data:{
     licNo: '',
@@ -8,6 +9,11 @@ Page({
     birthDate: '1990-01-01',
     licImgURL: '',
     state:'UNSUBMITTED' as 'UNSUBMITTED' | 'PENDING' | 'VERIFIED',
+  },
+  onLoad(opt: Record<'redirect', string>) {
+    if(opt.redirect){
+      this.redirectURL = decodeURIComponent(opt.redirect)
+    }
   },
 
   onUploadLic(){
@@ -63,9 +69,11 @@ Page({
     this.setData({
       state:'VERIFIED',
     })
-    wx.redirectTo({
-      url:'/pages/lock/lock',
-    })
+    if (this.redirectURL){
+      wx.redirectTo({
+        url:this.redirectURL,
+      })
+    }
   }
 
 })
