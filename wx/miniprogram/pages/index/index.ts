@@ -58,6 +58,11 @@ Page({
           fail:console.error,
         })
     },
+    onMyTripsTap() {
+      wx.navigateTo({
+        url: '/pages/mytrips/mytrips'
+      })
+    },
 
     onShow() {
       
