@@ -41,6 +41,13 @@ Page({
     markers: [] as Marker[],
     },
 
+    async onLoad(){
+      const userInfo = await getApp<IAppOption>().globalData.userInfo
+      this.setData({
+        avatarURL:userInfo.avatarUrl,
+      })
+
+    },
     onScanClicked(){
         wx.scanCode({
           success:()=>{
