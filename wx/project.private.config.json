@@ -28,6 +28,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "driving",
+          "pathName": "pages/driving/driving",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }
