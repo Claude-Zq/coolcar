@@ -1,66 +1,61 @@
-// pages/lock/lock.ts
+const shareLocationKey = "share_location"
+
 Page({
 
-  /**
-   * 页面的初始数据
-   */
+
   data: {
+      shareLocation: false,
+      avatarURL: '',
+  },
+
+  async onLoad() {
+    const userInfo = await getApp<IAppOption>().globalData.userInfo
+    this.setData({
+      avatarURL:userInfo.avatarUrl,
+      shareLocation:wx.getStorageSync(shareLocationKey) || false
+    })
 
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad() {
+  onGetUserInfo() {
+
+    const userInfo: WechatMiniprogram.UserInfo = {
+      avatarUrl: '/resources/man.jpg', 
+      city: '重庆',
+      country: '中国',  
+      gender: 1,
+      language: "zh_CN",
+      nickName: '测试号',
+      province: '重庆',
+
+    }
+    if (userInfo) {
+        getApp<IAppOption>().resolveUserInfo(userInfo)
+        this.setData({
+            shareLocation: true,
+            avatarURL:userInfo.avatarUrl
+        })
+        wx.setStorageSync(shareLocationKey, true)
+    }
 
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
+  onShareLocation(e: any) {
+    this.data.shareLocation = e.detail.value
+    wx.setStorageSync(shareLocationKey, this.data.shareLocation)
+  
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
+  onUnlockTap() {
+      
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
   onUnload() {
-
+      this.clearCarRefresher()
+      wx.hideLoading()
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
+  clearCarRefresher() {
+    
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
-  }
 })
