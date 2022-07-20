@@ -1,3 +1,5 @@
+import { routing } from "../../utils/routing"
+
 const updateIntervalSec = 5
 const initialLat = 29.531873
 const initialLng = 106.607808
@@ -45,7 +47,8 @@ Page({
   },
 
   onLoad(opt:Record<'trip_id',string>){
-    console.log('current trip:',opt.trip_id)
+    const o:routing.DrivingOpts =  opt
+    console.log('current trip:',o.trip_id)
     this.setupLocationUpdator()
     this.setupTimer()
   },

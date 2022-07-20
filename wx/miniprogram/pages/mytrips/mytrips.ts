@@ -1,3 +1,4 @@
+import { routing } from "../../utils/routing"
 
 interface Trip {
   id: string
@@ -43,21 +44,25 @@ Page({
   data: {
       promotionItems: [
           {
-              img: 'https://img.mukewang.com/5f7301d80001fdee18720764.jpg',
+              img: 'https://i0.hdslb.com/bfs/banner/de779b9b2a10a59c4c3e21754d59926024012b33.jpg@976w_550h_1c.webp',
               promotionID: 1,
           },            
           {
-              img: 'https://img.mukewang.com/5f6805710001326c18720764.jpg',
+              img: 'https://w.wallhaven.cc/full/m9/wallhaven-m9jqz9.jpg',
               promotionID: 2,
           },
           {
-              img: 'https://img.mukewang.com/5f6173b400013d4718720764.jpg',
+              img: 'https://i0.hdslb.com/bfs/banner/9fce93d4d936eaa5847a9014436a5be6548093d7.jpg@976w_550h_1c.webp',
               promotionID: 3,
           },
           {
-              img: 'https://img.mukewang.com/5f7141ad0001b36418720764.jpg',
+              img: 'https://i0.hdslb.com/bfs/banner/b8089866e3e7ed8073bab69b533c69483ef8dd71.png@976w_550h_1c.webp',
               promotionID: 4,
           },
+          {
+            img: 'https://i0.hdslb.com/bfs/banner/ba26f24c8972791bf8db14015bc7881e61cce97d.png@976w_550h_1c.webp',
+            promotionID: 5,
+        },   
       ],
   
       avatarURL: '',
@@ -126,6 +131,9 @@ Page({
   },
 
   onRegisterTap() {
+    wx.navigateTo({
+      url: routing.register(),
+    })
      
   },
 

@@ -1,3 +1,5 @@
+import { routing } from "../../utils/routing"
+
 Page({
   redirectURL: '',
 
@@ -11,8 +13,9 @@ Page({
     state:'UNSUBMITTED' as 'UNSUBMITTED' | 'PENDING' | 'VERIFIED',
   },
   onLoad(opt: Record<'redirect', string>) {
-    if(opt.redirect){
-      this.redirectURL = decodeURIComponent(opt.redirect)
+    const o:routing.RegisterOpts = opt
+    if(o.redirect){
+      this.redirectURL = decodeURIComponent(o.redirect)
     }
   },
 
