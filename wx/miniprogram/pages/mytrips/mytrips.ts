@@ -75,8 +75,11 @@ Page({
       navScroll: '',
   },
 
-  onLoad() {
-     
+  async onLoad() {
+    const userInfo = await getApp<IAppOption>().globalData.userInfo
+    this.setData({
+      avatarURL:userInfo.avatarUrl,
+    })
   },
 
   onShow() {
