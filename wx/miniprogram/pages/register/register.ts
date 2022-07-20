@@ -44,7 +44,7 @@ Page({
 
   onGenderChange(e: any) {
     this.setData({
-        genderIndex: parseInt(e.detail.value),
+        genderIndex: e.detail.value,
     })
   },
   onBirthDateChange(e: any) {

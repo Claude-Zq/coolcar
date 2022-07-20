@@ -21,23 +21,13 @@ Page({
 
   },
 
-  onGetUserInfo() {
+  onGetUserInfo(e:any) {
 
-    const userInfo: WechatMiniprogram.UserInfo = {
-      avatarUrl: '/resources/man.jpg', 
-      city: '重庆',
-      country: '中国',  
-      gender: 1,
-      language: "zh_CN",
-      nickName: '测试号',
-      province: '重庆',
-
-    }
+    const userInfo: WechatMiniprogram.UserInfo = e.detail.unserInfo
     if (userInfo) {
         getApp<IAppOption>().resolveUserInfo(userInfo)
         this.setData({
             shareLocation: true,
-            avatarURL:userInfo.avatarUrl
         })
         wx.setStorageSync(shareLocationKey, true)
     }
@@ -59,6 +49,7 @@ Page({
               latitude:loc.latitude,
               longitude:loc.longitude,
           },
+          //TODO:需要双向绑定
           avatarURL:this.data.shareLocation ? this.data.avatarURL : '',
         }
         )
@@ -86,14 +77,5 @@ Page({
       }
     })
    
-  },
-
-  onUnload() {
-      this.clearCarRefresher()
-      wx.hideLoading()
-  },
-
-  clearCarRefresher() {
-    
   },
 })
