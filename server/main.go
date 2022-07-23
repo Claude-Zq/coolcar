@@ -8,7 +8,7 @@ import (
 	"net"
 	"net/http"
 
-	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
+	"github.com/grpc-ecosystem/grpc-gateway/runtime"
 	"google.golang.org/grpc"
 )
 
@@ -36,7 +36,12 @@ func startGRPCGateway() {
 	c, cancel := context.WithCancel(c)
 	defer cancel()
 
-	mux := runtime.NewServeMux()
+	mux := runtime.NewServeMux(runtime.WithMarshalerOption(
+		runtime.MIMEWildcard, &runtime.JSONPb{
+			EnumsAsInts: true,
+			OrigName:    true,
+		},
+	))
 
 	err := trippb.RegisterTripServiceHandlerFromEndpoint(
 		c,
@@ -50,7 +55,7 @@ func startGRPCGateway() {
 
 	err = http.ListenAndServe(":8080", mux)
 	if err != nil {
-		log.Fatal("cannot listen and server :%v", err)
+		log.Fatalf("cannot listen and server :%v", err)
 	}
 
 }
