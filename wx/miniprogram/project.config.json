@@ -1,12 +1,16 @@
 {
-  "appid": "wx361a81db28527b67",
-  "compileType": "miniprogram",
-  "libVersion": "2.25.1",
+  "description": "项目配置文件，详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
   "packOptions": {
     "ignore": [],
     "include": []
   },
+  "miniprogramRoot": "",
+  "compileType": "miniprogram",
+  "projectname": "coolcar",
   "setting": {
+    "useCompilerPlugins": [
+      "typescript"
+    ],
     "urlCheck": true,
     "coverView": true,
     "es6": true,
@@ -31,13 +35,22 @@
       "outputPath": ""
     },
     "disableUseStrict": false,
-    "useCompilerPlugins": false,
-    "minifyWXML": true
+    "minifyWXML": true,
+    "compileHotReLoad": true
   },
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
   "condition": {},
+  "srcMiniprogramRoot": "",
+  "appid": "wx361a81db28527b67",
+  "libVersion": "2.25.0",
   "editorSetting": {
     "tabIndent": "insertSpaces",
     "tabSize": 2
   },
-  "description": "项目配置文件，详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html"
+  "scripts": {
+    "beforeCompile": "npm run tsc",
+    "beforePreview": "npm run tsc",
+    "beforeUpload": "npm run tsc"
+  }
 }
