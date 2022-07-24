@@ -1,12 +1,16 @@
 package main
 
 import (
+	"context"
 	authpb "coolcar/auth/api/gen/v1"
 	"coolcar/auth/auth"
+	"coolcar/auth/dao"
 	"coolcar/auth/wechat"
 	"log"
 	"net"
 
+	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo/options"
 	"go.uber.org/zap"
 	"google.golang.org/grpc"
 )
@@ -21,6 +25,12 @@ func main() {
 	if err != nil {
 		logger.Fatal("cannot listen", zap.Error(err))
 	}
+	c := context.Background()
+
+	mongoClient, err := mongo.Connect(c, options.Client().ApplyURI("mongodb://localhost:27017/coolcar?readPreference=primary&ssl=false"))
+	if err != nil {
+		logger.Fatal("cannot connet mongodb: %v", zap.Error(err))
+	}
 
 	s := grpc.NewServer()
 	authpb.RegisterAuthServiceServer(s, &auth.Service{
@@ -28,6 +38,7 @@ func main() {
 			AppID:     "wx361a81db28527b67",
 			AppSecret: "3b9f1dffe511621d84ee4c9b71fa066d",
 		},
+		Mongo:  dao.NewMongo(mongoClient.Database("coolcar")),
 		Logger: logger,
 	})
 
